@@ -78,9 +78,11 @@ a {
   text-decoration: none;
 }
 a:hover{
-  background: rgb(200, 240, 255);
+  background: rgb(25, 159, 212);
   padding: 8px 20px;
   border-radius: 10px;
+  color: #fff;
+  font-size: 1.3rem;
 }
 
 .topWrapper {
