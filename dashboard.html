@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Dashboard-G3 M-App</title>
+  <script src="https://kit.fontawesome.com/5635c9fe4e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -19,17 +20,29 @@
         <div class="mainBoardTop">
           <div class="topWrapper">
             <div class="messaging">G3 Messaging App</div>
-            <div class="btn">
-              <button type="button">Create Group</button>
+            
+            <div class="displayFlex">
+            <div >
+               <button class="btn">
+
+                 <i class="fas fa-plus"></i> Add Group
+               </button> 
             </div>
+            <div class="icons" onclick=showProfile() id="menu">
+                <i class="fas fa-bars"></i>
+            </div>
+          </div>
           </div>
         </div>
         In here there are goin to be chats and all
       </div>
-      <div class="userProfile">
+      <div class="displayNone" id="userProfile">
         <!-- this is to the right of the group and it contains the setting for the user to pick from -->
+        <div class="icons" onclick=exitProfile()>
+          <i class="fas fa-times-circle"></i>
+        </div>
         <div class="userImage">
-          <img src="jerry.jpg" alt="user image">
+          <img src="userProfile.jpg" alt="user image">
           <p>Jerrycaffe</p>
         </div>
         <ul>
@@ -47,5 +60,16 @@
 
 
 </body>
+<script>
+  function exitProfile(){
+    document.getElementById('userProfile').className = 'displayNone';
+    document.getElementById('menu').className = 'icons';
+
+  }
+  function showProfile(){
+    document.getElementById('userProfile').className ='userProfile'
+    document.getElementById('menu').className = 'displayNone';
+  }
+</script>
 
 </html>
