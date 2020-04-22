@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media screen and (min-device-width: 621px) {
+  body {
+    display: flex;
+  }
+
+  .displayNone {
+    display: none;
+  }
+
+  .sideMenu {
+    width: 10%;
+    background: #fff;
+    border: 1px solid #d9d5d5;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .sideMenu i {
+    cursor: pointer;
+  }
+
+  .bodyWrapper {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+  }
+
+  .user {
+    display: none;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .searchArea ul {
+    display: flex;
+  }
+
+  .searchArea li {
+    list-style: none;
+  }
+
+  .searchArea a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    margin: 0 20px;
+    color: grey;
+    border: 1px solid grey;
+    padding: 5px 10px;
+    border-radius: 15px;
+  }
+
+  .searchArea a:hover {
+    background: #90b5fd;
+    color: #fff;
+    border: none;
+  }
+
+  .menu {
+    margin: 0 20px;
+    cursor: pointer;
+  }
+
+  .logo {
+    display: flex;
+    padding: 15px;
+    color: #fff;
+    font-size: 2rem;
+    background: #90b5fd;
+    height: 80px;
+  }
+
+  .searchArea {
+    height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 50px;
+    border-bottom: solid 1px #c4bebe;
+  }
+
+  .searchArea input {
+    width: 22vw;
+    border-radius: 5px;
+    border: solid 1px #0002;
+    height: 3rem;
+    padding: 15px;
+  }
+}
+
+.contentArea {
+  background: #f4f4f4;
+  padding: 70px 20px;
+}
+
+.nav {
+  display: none;
+}
+
+.groupImage img {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+hr {
+  display: none;
+}
+
+.groupOne {
+  display: flex;
+  background: #fff;
+  border-radius: 25px;
+  padding: 10px 80px;
+  margin: 20px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.groupDetails {
+  display: flex;
+  align-items: center;
+}
+
+.toggleOnline {
+  text-align: center;
+  color: #7df77d;
+  font-size: 2.2rem;
+}
+
+@media(max-device-width: 620px) {
+  .settings {
+    display: none;
+  }
+
+  .displayNone {
+    display: none;
+  }
+
+  .header {
+    padding: 20px;
+    margin: 0 0 20px 0;
+  }
+
+  .logo {
+    padding: 15px;
+    color: #fff;
+    font-size: 1.7rem;
+    background: #90b5fd;
+    height: 70px;
+    border-radius: 25px 25px 0 0;
+  }
+
+  .user {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    align-items: center;
+    margin: 0 0 30px 0;
+    border: solid 1px #f7efef;
+    box-shadow: 0 10px 20px #f2f2f2f2;
+  }
+
+  .userProfile {
+    display: flex;
+    align-items: center;
+  }
+
+  .userImage img {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #cccccc;
+    border-radius: 100%;
+  }
+
+  .userDetails {
+    padding: 0 10px;
+  }
+
+  .searchArea {
+    text-align: center;
+  }
+
+  .searchArea input {
+    width: 100%;
+    border-radius: 25px;
+    border: solid 1px #0002;
+    height: 3rem;
+    padding: 15px;
+  }
+
+  .contentArea {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .nav {
+    display: block;
+  }
+
+  .nav ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .nav li {
+    list-style: none;
+
+  }
+
+  .nav a {
+    color: #bbb;
+    font-size: 1.3rem;
+    text-decoration: none;
+  }
+
+  .active {
+    background: #90b5fd;
+    padding: 5px 30px;
+    border-radius: 10px;
+    color: #fff !important;
+  }
+
+  .domantColor {
+    color: #bbb;
+  }
+
+  .groupChats {
+
+    padding: 20px;
+    margin: 20px 0;
+
+  }
+
+  .groupOne {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .groupDetails {
+    display: flex;
+  }
+
+  .groupImage img {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #cccccc;
+    border-radius: 100%;
+  }
+
+  .groupName {
+    padding: 5px 15px;
+  }
+
+  .contentArea {
+    background: none;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .mobileMenu {
+    cursor: pointer;
+  }
+
+  hr {
+    display: block;
+    border: solid 1px #f4f4f4;
+  }
+}
