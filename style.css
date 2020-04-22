@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+  }
+  .container{
+    width:100%;
+    height:100%
+  }
+  body {
+    background-color: #c5d5e8;
+    background-image: url("https://i.ibb.co/r4mcwt3/background-image.jpg");
+  }
+  .gender{
+    position: relative;
+    right:100px;
+    margin-top:15px;
+  }
+  .birthday{
+    position: relative;
+    right:200px;
+    margin-top:15px;
+  }
+  button {
+    width:50%;
+    margin-top: 30px;
+    color: white;
+    background-color: #42a5f5;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 10px;
+  
+  }
+  /*.formWrapper{
+      width:40%;
+      text-align: center;
+      background-color: white;
+  }*/
+
+  
+  .formWrapper{
+    text-align: center;
+    background-color: white;
+    margin: 5% 5% 15% 5%;
+      top: 5%;
+      max-width: 60%;
+      position: relative;
+      left:150px;
+      min-height: 480px;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  
+  input{
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  @media(max-width:420px){
+      .wrapper{
+          width:100%;
+          height: auto;
+          text-align:center;
+          position:relative;
+          right:100px;
+      }
+      .gender{
+          position:relative;
+          left:10px;
+      }
+      .birthday{
+          position: relative;
+          right:50px;
+      }
+      input{
+          width:80%;
+      }
+      #firstname{
+          width: 100px;
+      }
+      #lastname{
+          width:71%;
+      }
+      body{
+          background-size: cover;
+          background-repeat: no-repeat;
+      }
+      .wrapper{
+          width: auto;
+      }
+  }
+  @media(min-width:765px){
+      .wrapper{
+          position: relative;
+          top:50px;
+      }
+      body{
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      .container{
+          width:auto;
+      }
+      .birthday{
+          position:relative;
+          right: 100px;
+      }
+      .gender{
+          position:relative;
+          right:20px;
+      }
+  }
