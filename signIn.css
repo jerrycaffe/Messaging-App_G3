@@ -1,0 +1,226 @@
+/* mobile view */
+body {
+  margin-top: 5%;
+  background-image: url("background_image.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 800%;
+}
+
+header {
+  display: flex;
+}
+
+.bar {
+  border: 1px solid black;
+  width: 30px;
+  margin-bottom: 10px;
+}
+
+.small-bar {
+  border: 1px solid black;
+  width: 20px;
+  margin-bottom: 10px;
+}
+
+.menu {
+  padding: 10px;
+  margin-top: 7px;
+}
+
+.logo-name {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 4%;
+}
+
+.logo {
+  margin-left: 20px;
+  font-size: 30px;
+  padding: 10px;
+}
+
+.container {
+  position: absolute;
+  top: 15%;
+  margin-left: 9%;
+  width: 70%;
+  height: 70%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.new-header {
+  display: none;
+}
+
+.sign-in {
+  text-align: center;
+  margin-top: 30%;
+
+}
+
+.text {
+  margin-top: 30px;
+}
+
+.input input{
+  margin-top: 40px;
+  width: 70%;
+  height: 30px;
+  outline: none;
+  border: none;
+}
+
+.input {
+  border-bottom: 1px solid grey;
+  width: 75%;
+  margin-left: 13%;
+}
+
+.button button {
+  margin-top: 30px;
+  color: white;
+  background-color: #42a5f5;
+  width: 70%;
+  height: 30px;
+  border-radius: 10px;
+  outline: none;
+
+}
+
+footer{
+margin-top: 160%;
+}
+
+/* Tablet view */
+
+@media (min-width:768px) {
+  body {
+    background-image: url("background_image.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 500%;
+    margin: 5% 10% 5% 10%;
+
+  }
+
+  header {
+    position: relative;
+    z-index: 2;
+    top: 50px;
+    left: 40px;
+
+  }
+
+  .bar {
+    border: 1px solid black;
+    width: 30px;
+    margin-bottom: 10px;
+  }
+
+  .small-bar {
+    border: 1px solid black;
+    width: 20px;
+    margin-bottom: 10px;
+  }
+
+  .menu {
+    padding: 10px;
+  }
+
+  .logo-name {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 18%;
+  }
+
+  .logo {
+    margin-left: 20px;
+    font-size: 30px;
+    padding: 10px;
+  }
+
+
+  .container {
+    margin: 5% 5% 15% 5%;
+    top: 5%;
+    max-width: 100%;
+    min-height: 480px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+
+  .sub-container {
+    display: flex;
+    height: 104%;
+    margin-right: -10px;
+    margin-top: -10px;
+  }
+
+  .sign-in {
+    width: 50%;
+    text-align: center;
+    margin-top: 18%;
+  }
+
+  .image {
+    width: 50%;
+    background-image: url("G3 sky.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0px 10px 10px 0px;
+}
+
+}
+
+/* laptop view */
+@media (min-width:1024px) {
+  body {
+    height: 642px;
+    background-image: url("background_image.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  header {
+    left: 40px;
+  }
+  .logo-name {
+    margin-left: 23%;
+  }
+
+  .sign-in {
+    margin-top: 15%;
+  }
+
+  .container {
+    margin-left: 35px;
+  }
+
+}
+
+@media (min-width:1440px) {
+  body {
+    height: 675px;
+    background-image: url("background_image.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  header {
+    left: 45px;
+  }
+  .logo-name {
+    margin-left: 29%;
+  }
+  .container {
+    margin-left: 42px;
+  }
+  .sub-container {
+    height: 103.5%;
+  }
+  .sign-in {
+    margin-top: 10%;
+  }
+}
