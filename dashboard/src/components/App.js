@@ -1,33 +1,82 @@
 import React, { Component } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
-import Contents from './Contents'
+import Content from './Content';
+import axios from 'axios'
 
 class App extends Component {
-  state = {
-    isToggled: false
+  constructor(props){
+  super(props);
+    this.state = {
+      sidebarToggle: false,
+      contentToggle: true,
+      currGroupMsgs: [''],
+      hour: '',
+      minute: ''
+    }
   }
-  handleToggle =()=>{
-    this.setState({isToggled: !this.state.isToggled})
-   }
+
+  handleSidebarToggle = () => {
+    this.setState({sidebarToggle: !this.state.sidebarToggle})
+  }
+
+  handleContentToggle = (id) => {
+      const today = new Date();
+      const hour = today.getHours();
+      const minute = today.getMinutes();
+      console.log(id);
+      axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then(res => { console.log(res.data)
+      this.setState({
+        contentToggle : !this.state.contentToggle,
+        currGroupMsgs : res.data.body,
+        hour: hour,
+        minute: minute
+      })
+    })
+  }
+
+  backToGroupList = () => {
+    this.setState({
+      contentToggle: !this.state.contentToggle,
+    })
+  }
+
+  // handleGroupMessages = (id) => {
+  //   console.log(id);
+  //   axios.get(`https://jsonplaceholder.typicode.com/posts?id=1`)
+  //   .then(res => { 
+  //     console.log(res.data);
+  //     this.setState({
+  //       currGroupMsgs : res.data
+  //       })
+  //     })
+  // }
+
+
   render(){
     return (
       <div className="body">
-        <Sidebar 
-          isToggled={this.state.isToggled} 
-          handleToggle={this.handleToggle}
+        <Sidebar
+          sidebarToggle={this.state.sidebarToggle}
+          handleSidebarToggle={this.handleSidebarToggle}
         />
-  <div className="bodyWrapper">
-    <Header 
-      isToggled={this.state.isToggled} 
-      handleToggle={this.handleToggle}
-    />
-    <Contents />
-    
-  </div>
-</div>
-  );
-}
+        <div className="bodyWrapper">
+          <Header
+            sidebarToggle={this.state.sidebarToggle}
+            handleSidebarToggle={this.handleSidebarToggle}
+          />
+          <Content 
+          contentToggle={this.state.contentToggle} 
+          handleContentToggle={this.handleContentToggle}
+          handleGroupMessages = {this.handleGroupMessages}
+          currGroupMsgs = {this.state.currGroupMsgs}
+          />
+
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

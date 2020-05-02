@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import userProfile from '../utils/userProfile.jpg';
 
-const Header = (props)=>{
+const Header = (props) => {
   
     return ( 
     <div className="header">
       <div className="title"> 
        <div className="logo">
           <div 
-          className={(props.isToggled)?'displayNone': 'menu'} 
-          onClick={props.handleToggle}>
+          className={(props.sidebarToggle)?'displayNone': 'menu'} 
+          onClick={props.handleSidebarToggle}>
           <i className="fas fa-bars"></i>
           </div>
           
@@ -35,7 +35,7 @@ const Header = (props)=>{
     </div>
     <div className="searchArea">
       <form action="">
-        <input type="text"  placeholder="Search a Group" />
+        <input type="text"  placeholder="Search for a group" />
       </form>
       <div className="settings">
         <ul>
