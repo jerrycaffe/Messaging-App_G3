@@ -6,32 +6,34 @@ import Modal from './Modal';
 
 
 class Contents extends Component{
+  
    render(){
+    const {toggleModal, showHideModal, selectImage, handleSelectImage, handleChange, groupName, handleSubmit, groups} = this.props;
     return(<div className="contentArea">
               <MobileNav 
-                 toggleModal={this.props.toggleModal}
-                 showHideModal={this.props.showHideModal}
-                 selectImage={this.props.selectImage}
-                 handleSelectImage={this.props.handleSelectImage}
-                 handleChange={this.props.handleChange}
-                 groupName={this.props.groupName}
-                 handleSubmit={this.props.handleSubmit}
+                 toggleModal={toggleModal}
+                 showHideModal={showHideModal}
+                 selectImage={selectImage}
+                 handleSelectImage={handleSelectImage}
+                 handleChange={handleChange}
+                 groupName={groupName}
+                 handleSubmit={handleSubmit}
               />
 
               <div>
               <Modal 
-                toggleModal={this.props.toggleModal}
-                showHideModal={this.props.showHideModal}
-                selectImage={this.props.selectImage}
-                handleSelectImage={this.props.handleSelectImage}
-                handleChange={this.props.handleChange}
-                groupName={this.props.groupName}
-                handleSubmit={this.props.handleSubmit}
+                toggleModal={toggleModal}
+                showHideModal={showHideModal}
+                selectImage={selectImage}
+                handleSelectImage={handleSelectImage}
+                handleChange={handleChange}
+                groupName={groupName}
+                handleSubmit={handleSubmit}
                 />
               </div>
 
               <CreatedGroups 
-                groups= {this.props.groups}
+                groups= {groups}
               />
        </div>
     )}

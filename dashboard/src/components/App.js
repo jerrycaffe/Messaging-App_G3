@@ -22,19 +22,18 @@ class App extends Component {
       console.log(response.data)
     })
   }
+
   handleSelectImage=(event)=>{
     this.setState({selectImage: URL.createObjectURL(event.target.files[0])})
-    
   }
+
   handleToggle =()=>{
     this.setState({...this.state,
       isToggled: !this.state.isToggled})
    }
    showHideModal=(event)=>{
-     this.setState({
-      ...this.state,
-      toggleModal: !this.state.toggleModal
-     })
+     this.setState({...this.state,
+      toggleModal: !this.state.toggleModal})
      event.preventDefault();
    }
 
@@ -51,13 +50,11 @@ class App extends Component {
     const imageUrl = this.state.selectImage;
     const newGroup = {name, description, activeMembers: 10, imageUrl}
     
-    this.setState({
-      ...this.state,
+    this.setState({...this.state,
       toggleModal: !this.state.toggleModal,
-      groups: [newGroup, ...this.state.groups]
-    })
-   
-   }
+      groups: [newGroup, ...this.state.groups]})
+    }
+
   render(){
     return (
       <div className="body">
@@ -65,25 +62,25 @@ class App extends Component {
           isToggled={this.state.isToggled} 
           handleToggle={this.handleToggle}
         />
-  <div className="bodyWrapper">
-    <Header 
-      isToggled={this.state.isToggled} 
-      handleToggle={this.handleToggle}
-      showHideModal={this.showHideModal}
-      toggleModal={this.state.toggleModal}
-      handleSubmit={this.handleSubmit}
-    />
+      <div className="bodyWrapper">
+        <Header 
+        isToggled={this.state.isToggled} 
+        handleToggle={this.handleToggle}
+        showHideModal={this.showHideModal}
+        toggleModal={this.state.toggleModal}
+        handleSubmit={this.handleSubmit}
+      />
     
-    <Contents groups={this.state.groups}
-      handleToggle={this.handleToggle}
-      showHideModal={this.showHideModal}
-      toggleModal={this.state.toggleModal}
-      selectImage={this.state.selectImage}
-      handleSelectImage={this.handleSelectImage}
-      handleChange={this.handleChange}
-      handleSubmit={this.handleSubmit}
-      
-    />
+      <Contents groups={this.state.groups}
+        handleToggle={this.handleToggle}
+        showHideModal={this.showHideModal}
+        toggleModal={this.state.toggleModal}
+        selectImage={this.state.selectImage}
+        handleSelectImage={this.handleSelectImage}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        
+      />
     
   </div>
 </div>);
