@@ -36,23 +36,11 @@ class App extends Component {
     })
   }
 
-  backToGroupList = () => {
+  handleBackToGroupList = () => {
     this.setState({
       contentToggle: !this.state.contentToggle,
     })
   }
-
-  // handleGroupMessages = (id) => {
-  //   console.log(id);
-  //   axios.get(`https://jsonplaceholder.typicode.com/posts?id=1`)
-  //   .then(res => { 
-  //     console.log(res.data);
-  //     this.setState({
-  //       currGroupMsgs : res.data
-  //       })
-  //     })
-  // }
-
 
   render(){
     return (
@@ -71,6 +59,7 @@ class App extends Component {
           handleContentToggle={this.handleContentToggle}
           handleGroupMessages = {this.handleGroupMessages}
           currGroupMsgs = {this.state.currGroupMsgs}
+          handleBackToGroupList = {this.handleBackToGroupList}
           />
 
         </div>

@@ -63,6 +63,7 @@ class Content extends Component{
       handleContentToggle={this.props.handleContentToggle}
       handleGroupMessages = {this.props.handleGroupMessages} 
       currGroupMsgs = {this.props.currGroupMsgs}
+      handleBackToGroupList = {this.props.handleBackToGroupList}
       />
     </div>
   )}
