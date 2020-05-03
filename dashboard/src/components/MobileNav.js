@@ -1,25 +1,23 @@
 import React from 'react';
 import Modal from './Modal';
+import {connect} from 'react-redux';
+import {showModal} from '../reduxFiles/actions';
 
 const MobileNav = props=>{
   // this component is meant for the add group button for the mobile responsiveness alone if you are not working on the mobile view you have no business here
 
   return ( <div className="mobileNav">
   <ul>    
-      <button className="btn btn-primary"
-        onClick={props.showHideModal}>Add Group
+      <button className="button"
+        onClick={props.showModal}>Add Group
       </button>
-      <Modal 
-         toggleModal={props.toggleModal}
-         showHideModal={props.showHideModal}
-         selectImage={props.selectImage}
-         handleSelectImage={props.handleSelectImage}
-         handleChange={props.handleChange}
-         groupName={props.groupName}
-         handleSubmit={props.handleSubmit}
-      />
-   
+      <Modal />
   </ul>
 </div>)
 }
-export default MobileNav;
+const mapStateToProps = (state)=>{ return {reduxStateAsProp: state
+}
+}
+const mapDispatchToProps = {showModal}
+
+export default connect(mapStateToProps , mapDispatchToProps)(MobileNav);

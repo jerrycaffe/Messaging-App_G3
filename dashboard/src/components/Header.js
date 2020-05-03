@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import userProfile from '../utils/userProfile.jpg';
 import ToggleSidebar from './ToggleSidebar';
+import {connect} from 'react-redux';
+import {showModal} from '../reduxFiles/actions'
 
 
 class Header extends Component{
@@ -10,10 +12,9 @@ class Header extends Component{
       <div className="title"> 
        <div className="logo">
          {/* This is the left side hand bugger for extra opptions */}
-          <ToggleSidebar 
-          isToggled={this.props.isToggled} 
-          handleToggle={this.props.handleToggle}
-          />
+
+          <ToggleSidebar/>
+          
         {/* The logo name */}
         G3 Messenger
       </div>
@@ -49,20 +50,13 @@ class Header extends Component{
         <ul>
           {/* Button Tool bar is from react bootstrap component is used to pop the modal box once the add group button is clicked*/}
           <button 
-            className="btn btn-primary"
-            onClick={this.props.showHideModal}>
-            Add Group
+            className="button"
+            onClick={()=>{this.props.showModal()}}>
+            AddGroup
           </button>
           
-            {/* <AddGroup 
-              show={this.props.toggleModal}
-              onHide={this.props.showHideModal}
-              selectImage={this.props.selectImage}
-              handleSelectImage={this.props.handleSelectImage}
-              handleSubmit={this.props.handleSubmit}
-            /> */}
-           
-          
+          <button className="button">Settings</button>
+          <button className="button">Supports</button>          
         </ul>
         
       </div>
@@ -72,4 +66,9 @@ class Header extends Component{
 }
 
  
-export default Header;
+const mapStateToProps = (state)=>{ return {reduxStateAsProp: state
+}
+}
+const mapDispatchToProps = {showModal}
+
+export default connect(mapStateToProps , mapDispatchToProps)(Header);

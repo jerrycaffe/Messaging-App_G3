@@ -17,7 +17,7 @@
   }
 
   .sideMenu {
-    width: 10%;
+    width: 5%;
     background: #fff;
     border: 1px solid #d9d5d5;
     font-size: 2rem;
@@ -25,7 +25,8 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    
+    height: 100vh;
+    position: fixed;
   }
 
   .sideMenu i {
@@ -50,21 +51,21 @@
     display: flex;
   }
 
-  /* .butt {
+  .button {
     font-size: 1.3rem;
     margin: 0 20px;
     color: grey;
     border: none;
     padding: 8px 15px;
     border-radius: 15px;
-  } */
-/* 
-  .butt:hover {
-    background: #90b5fd;
+  } 
+
+  .button:hover {
+    background: #033292;
     color: #fff;
     border: none;
     cursor: pointer;
-  } */
+  } 
 
   .menu {
     margin: 0 20px;
@@ -76,7 +77,7 @@
     padding: 15px;
     color: #fff;
     font-size: 2rem;
-    background: #007bff;
+    background: #033292;
     height: 80px;
   }
 
@@ -131,7 +132,6 @@
   width: 150px;
   height: 120px;
   border-radius: 50%;
-  
 }
 
 /* Modal box */
@@ -208,7 +208,7 @@
     padding: 15px;
     color: #fff;
     font-size: 1.7rem;
-    background: #90b5fd;
+    background: #033292;
     height: 70px;
     border-radius: 25px 25px 0 0;
   }
@@ -316,7 +316,21 @@
   .groupName {
     padding: 5px 15px;
   }
+  .button {
+    font-size: 1.3rem;
+    margin: 0 20px;
+    color: grey;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+  } 
 
+  .button:hover {
+    background: #033292;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  } 
   .contentArea {
     background: none;
   }

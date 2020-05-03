@@ -1,9 +1,18 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-const CreatedGroups=({groups})=>{
+const CreatedGroups=(props)=>{
+  const {groups} = props.reduxStateAsProp
   if(groups.length===0){
-    return (<h1>You currently do not have any Group</h1>)
-  } return (
+    return (<div className="groupChats">
+                <div className="groupOne">
+                  <h3>
+                    You currently do not have any Group
+                  </h3>
+                </div>
+            </div>)
+        } 
+    return (
     <div className="groupChats">
       {groups.map((group, id)=>{
         return(
@@ -23,10 +32,16 @@ const CreatedGroups=({groups})=>{
             <h4 className="domantColor">Active Members</h4>
             <h5>{group.activeMembers}</h5>
           </div>
-          <hr/>
         </div>)
       })}
     </div>)
   }
 
-export default CreatedGroups;
+  const mapStateToProps = (state)=>{ return {reduxStateAsProp: state
+
+  }
+}
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps , mapDispatchToProps)(CreatedGroups);
