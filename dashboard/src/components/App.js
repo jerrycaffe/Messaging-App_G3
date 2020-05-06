@@ -57,11 +57,9 @@ class App extends Component {
           <Content 
           contentToggle={this.state.contentToggle} 
           handleContentToggle={this.handleContentToggle}
-          handleGroupMessages = {this.handleGroupMessages}
           currGroupMsgs = {this.state.currGroupMsgs}
           handleBackToGroupList = {this.handleBackToGroupList}
           />
-
         </div>
       </div>
     );

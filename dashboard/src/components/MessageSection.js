@@ -1,8 +1,46 @@
 import React, { Component } from 'react'
 import AddMemberModal from './AddMemberModal'
+import GroupMemberList from './GroupMemberList'
 
 export default class MessageSection extends Component {
+	state = {
+        memberList: []
+    }
+
+    handleAddNewMember = (id, name, email) => {
+        const member = (
+            <li key={id}>
+                <div className="d-flex justify-content-between bd-highlight">
+                    <div className="d-flex justify-content-start">
+                        <div className="img_cont" style={{marginRight:'15px'}}>
+                            <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg" className="rounded-circle user_img" />
+                        </div>
+                        <div className="new_member_info">
+                            <span><strong> {name} </strong></span>
+                            <p>{email}</p>
+                        </div>
+                    </div>
+					<div>
+						<button type="button" className="btn btn-danger" data-dismiss="modal" onClick={this.removeMember.bind(this, id)}> Remove </button>
+					</div>
+                </div>
+            </li>
+		)
+
+        this.setState({
+            memberList: [...this.state.memberList, member]
+        })
+	}
+
+	removeMember = (id) => {
+		this.setState({
+			memberList: [...this.state.memberList.filter( member => member.id !== id )]
+		})
+	}
+	
+
     render() {
+		console.log(this.state.memberList, 'member list')
         return (
             <div className="col-md-8 col-xl-6 chat">
 					<div className="card">
@@ -20,15 +58,21 @@ export default class MessageSection extends Component {
 									<span><i className="fas fa-phone"></i></span>
 								</div>
 							</div>
-							<span id="action_menu_btn"><i className="fas fa-ellipsis-v"></i></span>
-							<div className="action_menu">
-								<ul>
-									<li><i className="fas fa-user-circle"></i> View profile</li>
-									<li><i className="fas fa-users"></i> Add to friend List</li>
-									<li><i className="fas fa-plus" data-toggle="modal" data-target="#exampleModal"></i> Add new member</li>
-									<li><i className="fas fa-ban"></i> Block</li>
-								</ul>
-							</div>
+                            <span id='action_menu_btn'>
+                                <div className='dropdown'>
+                                    <a  href="#" id="dropdownMenuLink" data-toggle='dropdown' aria-haspopup="true" aria-expanded="false">
+                                        <i className="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div className='dropdown-menu action_menu' aria-labelledby="dropdownMenuLink">
+                                        <a className='dropdown-item' data-toggle="modal" data-target="#groupList"><i className="fas fa-user-circle"></i> View group members</a>
+                                        <a className='dropdown-item'><i className="fas fa-users"></i> Add to friend List</a>
+                                        <a className='dropdown-item' data-toggle="modal" data-target="#staticBackdrop"><i className="fas fa-plus"></i> Add new member</a>
+                                        <a className='dropdown-item'><i className="fas fa-ban"></i> Block</a>
+                                    </div>
+                                </div>
+                            </span>
+                                <AddMemberModal handleAddNewMember={this.handleAddNewMember} />
+								<GroupMemberList memberList={this.state.memberList}/>
 						</div>
 						<div className="card-body msg_card_body">
 							<div className="d-flex justify-content-start mb-4">
@@ -86,7 +130,6 @@ export default class MessageSection extends Component {
 								</div>
 							</form>
 						</div>
-                        < AddMemberModal />
 					</div>
 				</div>
         )

@@ -71,14 +71,15 @@ class ChatSquare extends Component {
                     <div className="row justify-content-center h-100">
                                                 {/* <!--chat sidebar--> */}
                         <SideNewGroupMsg />
-                                                {/* <!--new area--> */}                
+                                                {/* <!--new group message area--> */}                
                         
                         <MessageSection 
                         onChange={this.onChange} 
                         onSubmit={this.onSubmit} 
                         chats={this.state.chats} 
                         chatLog={this.state.chatLog}
-                        handleBackToGroupList = {this.props.handleBackToGroupList}
+                        // handleBackToGroupList = {this.props.handleBackToGroupList}
+                        // handleAddNewMember={this.props.handleAddNewMember}
                         />
                     </div>
                 </div>

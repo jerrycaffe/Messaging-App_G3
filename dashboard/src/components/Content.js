@@ -18,53 +18,50 @@ class Content extends Component{
   }
 
   componentDidMount = () => {
-    const today = new Date();
-        const hour = today.getHours();
-        const minute = today.getMinutes();
-        console.log(hour);
-        console.log(today);
     axios.get('https://jsonplaceholder.typicode.com/posts?_limit=7').then(res =>{
-    console.log(res.data);
     this.setState({
       groups: res.data.concat(this.state.groups)
       })}
     )
   }
+
   render(){
-    
+    const groups = this.state.groups.map((group) => { 
+      const id = group.id;
+      return (
+        <div className="group" key={group.id} onClick={this.props.handleContentToggle.bind(this, id)}>
+          <div className="groupDetails">
+            <div className="groupImage">
+              <img src={userProfile} alt="User profile" />
+            </div>
+            <div className="groupName">
+              <h4>{group.id}</h4>
+              <h5 className="domantColor"> {group.title}</h5>
+            </div>
+          </div>
+          <div className="noOfParticipant">
+            <h4 className="domantColor">Active Members</h4>
+            <h5>{50}</h5>
+          </div>
+          <hr />
+        </div>
+        )
+    })
     return(
       <div>
-      <div className={this.props.contentToggle ? "contentArea" : "displayNone"}>
-          <div className="groupChats">
-            {this.state.groups.map((group) => { const id = group.id;
-              return (
-                <div className="group" key={group.id} onClick={this.props.handleContentToggle.bind(this, id)}>
-                  <div className="groupDetails">
-                    <div className="groupImage">
-                      <img src={userProfile} alt="User profile" />
-                    </div>
-                    <div className="groupName">
-                      <h4>{group.id}</h4>
-                      <h5 className="domantColor"> {group.title}</h5>
-                    </div>
-                  </div>
-                  <div className="noOfParticipant">
-                    <h4 className="domantColor">Active Members</h4>
-                    <h5>{50}</h5>
-                  </div>
-                  <hr />
-                </div>
-                )
-            })}
-          </div>
-      </div>
-      <ChatSquare 
-      contentToggle={this.props.contentToggle} 
-      handleContentToggle={this.props.handleContentToggle}
-      handleGroupMessages = {this.props.handleGroupMessages} 
-      currGroupMsgs = {this.props.currGroupMsgs}
-      handleBackToGroupList = {this.props.handleBackToGroupList}
-      />
+        <div className={this.props.contentToggle ? "contentArea" : "displayNone"}>
+            <div className="groupChats">
+              {groups}
+            </div>
+        </div>
+        <ChatSquare 
+        contentToggle={this.props.contentToggle} 
+        handleContentToggle={this.props.handleContentToggle}
+        handleGroupMessages = {this.props.handleGroupMessages} 
+        currGroupMsgs = {this.props.currGroupMsgs}
+        handleBackToGroupList = {this.props.handleBackToGroupList}
+        handleAddNewMember={this.handleAddNewMember}
+        />
     </div>
   )}
 }

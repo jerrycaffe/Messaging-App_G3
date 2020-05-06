@@ -1,60 +1,69 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import userProfile from '../utils/userProfile.jpg';
 
 class AddMemberModal extends Component {
     state = {
-        name: '',
-        department: ''
+        persons: [
+            {
+                name: 'Alao',
+                email: 'alao@example.com',
+                id: 11
+            }
+        ]
     }
     componentDidMount = () => {
         axios.get('https://jsonplaceholder.typicode.com/users')
         .then( res => {
-            console.log(res.data);
+            console.log(res.data, 'cdm');
             this.setState({
-                name: res.data.name,
-                // department: res.data.company.bs
+                persons: res.data.concat(this.state.persons)
             })
         })
     }
+
     render() {
-        const potentialUser = (
-            <li className="left clearfix">
-                <span className="chat-img pull-left">
-                    <img src={userProfile} alt="User Avatar" className="img-circle"/>
-                </span>
-                <div className="chat-body clearfix">
-                    <div className="header_sec">
-                        <strong className="primary-font">{this.state.name}</strong> 
+        const potentialMember = this.state.persons.map(person => {
+            const {id, name, email} = person;
+            console.log(name)
+            return (
+                <li key={person.id}>
+                    <div className="d-flex justify-content-between bd-highlight">
+                        <div className="d-flex justify-content-start">
+                            <div className="img_cont" style={{marginRight:'15px'}}>
+                                <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg" className="rounded-circle user_img" />
+                            </div>
+                            <div className="new_member_info">
+                                <span><strong> {name} </strong></span>
+                                <p>{email}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" className="btn btn-success" onClick={this.props.handleAddNewMember.bind(this, id, name, email)}>Add</button>
+                        </div>
                     </div>
-                    <div className="contact_sec">
-                        <strong className="primary-font"> {this.state.department} </strong> 
-                        <span className="badge pull-right"><button type="button" className="btn btn-primary">Add</button></span>
-                    </div>
-                </div>
-            </li>
-        )
+                </li>
+            );
+        })
+
         return(
             <div>
-                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Add group
-                </button> */}
 
-                <div className="modal fade" id="exampleModal" data-backdrop="static" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal fade" id="staticBackdrop" data-backdrop="static" tabIndex="-1" role="dialog" aria-labelledby="#staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 className="modal-title" id="#staticBackdropLabel">Add Some Members to Your Group</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                                {potentialUser}
+                                <ul className="contacts"> 
+                                    {potentialMember}
+                                </ul>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary">Understood</button>
                             </div>
                         </div>
                     </div>
