@@ -1,46 +1,113 @@
-import React, { Component } from 'react'
-import AddMemberModal from './AddMemberModal'
-import GroupMemberList from './GroupMemberList'
+import React, { Component } from 'react';
+import AddMemberModal from './AddMemberModal';
+import GroupMemberList from './GroupMemberList';
+import { connect } from 'react-redux';
+import {newChatMessage} from '../reduxFiles/actions';
+import {handleBackToGroupList} from '../reduxFiles/actions';
+import uuid from 'uuid'
 
-export default class MessageSection extends Component {
+class MessageSection extends Component {
 	state = {
-        memberList: []
+		chats : '',
+		// chatLog: [],
+		memberList: [],
+		groupChatLog: [],
+		groupChatID: null
+	}
+
+	// componentDidMount = () => {
+	// 	const groupChatLog = this.props.reduxStateAsProp.currChatLog;
+	// 	const groupChatID = this.props.reduxStateAsProp.currChatID;
+	// 	this.setState({ 
+	// 		groupChatLog,
+	// 		groupChatID
+	// 	})
+	// }
+
+	// componentDidUpdate = (nextProps) => {
+	// 	if(nextProps.newChatMsg) {
+	// 		// this.setState({
+	// 		// 	groupChatLog: [this.state.groupChatLog.currChatMsgs]
+	// 		// })
+	// 	  this.props.reduxStateAsProp.currChatLog.push(nextProps.newChatMsg)
+	// 	}
+	// }
+	
+	onChange = (e) => { 
+        this.setState({ chats : e.target.value})
+	}
+
+	onSubmit = (e) => {
+        e.preventDefault();
+        let today = new Date();
+        let day;
+        switch (today.getDay()){
+            case 0:
+                day = 'Sunday';
+                break;
+            case 1:
+                day = 'Monday';
+                break;
+            case 2:
+                day = 'Tuesday';
+                break;
+            case 3:
+                day = 'Wednesday';
+                break;
+            case 4:
+                day = 'Thursday';
+                break;
+            case 5:
+                day = 'Friday';
+                break;
+            case 6:
+                day = 'Saturday';
+                break;
+        }
+        console.log(day)
+        let hour = today.getHours();
+		let minute = today.getMinutes();
+		console.log(this.state.chats)
+       const newChat = {
+		   message: this.state.chats,
+		   hour,
+		   minute,
+		   day
+	   }
+		const newChatDetails = {
+			msgId: uuid.v4(),
+			// messages: [...this.state.groupChatLog, newChat],
+			messages: newChat,
+			groupId: this.state.groupChatID
+		}
+		
+		this.props.newChatMessage(newChatDetails)
+
+        this.setState({  
+			chats: '',
+            // chatLog : [...this.state.chatLog, newChat]
+        })
     }
 
-    handleAddNewMember = (id, name, email) => {
-        const member = (
-            <li key={id}>
-                <div className="d-flex justify-content-between bd-highlight">
-                    <div className="d-flex justify-content-start">
-                        <div className="img_cont" style={{marginRight:'15px'}}>
-                            <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg" className="rounded-circle user_img" />
-                        </div>
-                        <div className="new_member_info">
-                            <span><strong> {name} </strong></span>
-                            <p>{email}</p>
-                        </div>
-                    </div>
-					<div>
-						<button type="button" className="btn btn-danger" data-dismiss="modal" onClick={this.removeMember.bind(this, id)}> Remove </button>
-					</div>
-                </div>
-            </li>
-		)
 
-        this.setState({
-            memberList: [...this.state.memberList, member]
-        })
-	}
-
-	removeMember = (id) => {
-		this.setState({
-			memberList: [...this.state.memberList.filter( member => member.id !== id )]
-		})
-	}
+	
 	
 
     render() {
-		console.log(this.state.memberList, 'member list')
+		// console.log(this.state.memberList, 'member list')
+		const messages = this.props.currChatLog.map(msg => {
+			return (
+				<div className="d-flex justify-content-end mb-4">
+					<div className="msg_cotainer_send">
+							{ msg.messages.message } 
+						<span className="msg_time_send" style={{marginLeft:'0px'}}> {msg.messages.hour} {' '}: {' '}{msg.messages.minute}, {msg.messages.day} </span>
+					</div>
+					<div className="img_cont_msg">
+						<img src="" className="rounded-circle user_img_msg" />
+					</div>
+				</div>
+			)
+		})
         return (
             <div className="col-md-8 col-xl-6 chat">
 					<div className="card">
@@ -51,7 +118,7 @@ export default class MessageSection extends Component {
 									<span className="online_icon"></span>
 								</div>
 								<div className="user_info">
-                                    <button onClick={this.props.handleBackToGroupList} ><i className="fas fa-arrow-left"></i> Go back</button>
+                                    <button className='goBackBtn' onClick={this.props.handleBackToGroupList} ><i className="fas fa-arrow-left"></i> Go back</button>
 								</div>
 								<div className="video_cam">
 									<span><i className="fas fa-video"></i></span>
@@ -112,18 +179,18 @@ export default class MessageSection extends Component {
 									<span className="msg_time">9:12 AM, Today</span>
 								</div>
 							</div>
-                            {this.props.chatLog}
+								{messages}
 						</div>
 						<div className="card-footer">
-							<form className="input-group" onSubmit={this.props.onSubmit}>
+							<form className="input-group" onSubmit={this.onSubmit}>
 								<div className="input-group-append">
 									<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
 								</div>
                                 <textarea 
                                 className = "form-control type_msg" 
                                 placeholder = "Type your message..."
-                                value = {this.props.chats}
-                                onChange = {this.props.onChange}
+                                value = {this.state.chats}
+                                onChange = {this.onChange}
                                 />
 								<div className="input-group-append">
 									<button type='submit' className="input-group-text send_btn"><i  className="fas fa-location-arrow"></i></button>
@@ -135,3 +202,15 @@ export default class MessageSection extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => { 
+	return { 
+	  reduxStateAsProp: state,
+	  newChatMsg: state.newChatMsg,
+	  currChatLog: state.currChatLog
+	}
+  }
+
+  const mapDispatchToProps = {newChatMessage, handleBackToGroupList}
+
+  export default connect(mapStateToProps, mapDispatchToProps)(MessageSection)

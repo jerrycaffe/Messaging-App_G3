@@ -43,7 +43,7 @@ export default class SideNewGroupMsg extends Component {
                             <li>
                                 <div className="d-flex bd-highlight">
                                     <div className="img_cont">
-                                        <img src="http://profilepicturesdp.com/wp-content/uploads/2018/07/sweet-girl-profile-pictures-9.jpg" className="rounded-circle user_img" />
+                                        <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg" className="rounded-circle user_img" />
                                         <span className="online_icon offline"></span>
                                     </div>
                                     <div className="user_info">

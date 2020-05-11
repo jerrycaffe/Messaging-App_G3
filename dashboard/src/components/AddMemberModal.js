@@ -1,32 +1,28 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {fetchPotentialGroupMembers} from '../reduxFiles/actions';
+import {addGroupMember} from '../reduxFiles/actions';
+import uuid from 'uuid'
 
 class AddMemberModal extends Component {
-    state = {
-        persons: [
-            {
-                name: 'Alao',
-                email: 'alao@example.com',
-                id: 11
-            }
-        ]
-    }
+    
     componentDidMount = () => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
-        .then( res => {
-            console.log(res.data, 'cdm');
-            this.setState({
-                persons: res.data.concat(this.state.persons)
-            })
-        })
+        this.props.fetchPotentialGroupMembers()
     }
 
+    
+
     render() {
-        const potentialMember = this.state.persons.map(person => {
+        const potentialMember = this.props.potentialMember.map(person => {
             const {id, name, email} = person;
             console.log(name)
+        const newGroupMember = {
+                id: uuid.v4(),
+                name,
+                email
+            }
             return (
-                <li key={person.id}>
+                <li key={id}>
                     <div className="d-flex justify-content-between bd-highlight">
                         <div className="d-flex justify-content-start">
                             <div className="img_cont" style={{marginRight:'15px'}}>
@@ -38,7 +34,7 @@ class AddMemberModal extends Component {
                             </div>
                         </div>
                         <div>
-                            <button type="button" className="btn btn-success" onClick={this.props.handleAddNewMember.bind(this, id, name, email)}>Add</button>
+                            <button type="button" className="btn btn-success" onClick={this.props.addGroupMember.bind(this, id, newGroupMember)}>Add</button>
                         </div>
                     </div>
                 </li>
@@ -73,4 +69,12 @@ class AddMemberModal extends Component {
     }
 }
 
-export default AddMemberModal;
+const mapStateToProps = (state) => {
+    return{
+        potentialMember: state.potentialMember
+    }
+}
+
+const mapDispatchToProps = {fetchPotentialGroupMembers, addGroupMember}
+
+export default connect(mapStateToProps, mapDispatchToProps) (AddMemberModal);
