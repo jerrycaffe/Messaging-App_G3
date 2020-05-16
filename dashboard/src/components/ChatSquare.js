@@ -7,7 +7,7 @@ import {handleContentToggle} from '../reduxFiles/actions'
 class ChatSquare extends Component {
     render() {
         return (
-                <div className={!this.props.reduxStateAsProp.contentToggle ? ".container-fluid" : 'displayNone'}>
+                <div className={!this.props.reduxStateAsProp.contentToggle ? ".container-fluid main_section" : 'displayNone'}>
                     <div className="row justify-content-center h-100">
                                                 {/* <!--Chat sidebar--> */}
                         <SideNewGroupMsg />

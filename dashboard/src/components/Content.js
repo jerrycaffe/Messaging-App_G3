@@ -9,7 +9,8 @@ import Modal from './Modal';
 class Content extends Component{
   render(){
     return(
-      <div className='main_section'>
+      // <div className='main_section'>
+      <div>
         <GroupList />
         <Modal />
         <ChatSquare />

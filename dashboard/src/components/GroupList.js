@@ -8,13 +8,11 @@ class GroupList extends Component {
         return (
                 // (Object.keys(group).length===0) ? 
             (groups.length===0 )?
-                <div className="groupChats main_section">
-                    <div className="">
-                        <h3 style={{margin:'5rem 5rem'}}>
+                <div className="groupChats">
+                        <h2 style={{margin:'5rem 5rem'}}>
                         Welcome Aboard! <br />
                         Click on 'Create Group' to begin
-                        </h3>
-                    </div>
+                        </h2>
                 </div>
                 :
             <div className={this.props.contentToggle ? "contentArea main_section" : "displayNone"}>
